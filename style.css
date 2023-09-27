@@ -1,7 +1,9 @@
 :root {
     --main-font-family: 'Manrope', sans-serif;
 }
-
+*{
+    box-sizing: border-box;
+}
 body {
     height: 100vh;
     width: 100vw;
@@ -14,6 +16,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.dark{
+    background: rgba(0, 0, 0);
+    opacity: 0.28;
+    pointer-events: none;
 }
 [class*="_content"]{
     padding: 0 145px;
@@ -60,6 +67,8 @@ body {
     font-weight: 500;
     background: transparent;
     color: white;
+    cursor: pointer;
+
 }
 /* MAIN */
 .main {
@@ -79,6 +88,8 @@ body {
 }
 .tasks-main {
     display: grid;
+    justify-content: space-between;
+    justify-items: stretch;
     grid-template-columns: repeat(3,1fr);
     gap: 50px;
 }
@@ -87,6 +98,8 @@ body {
 .main-tasks__task {
 }
 .task {
+    position: relative;
+    
 }
 .task__input {
     font-family: var(--main-font-family);
@@ -96,9 +109,104 @@ body {
     border-radius: 16px;
     background: white;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.10);
+    padding-left: 24px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    outline: none;
+
 }
 .task__input::placeholder{
     color: black;
     font-family: var(--main-font-family);
     font-weight: 500;
+}
+.task__button{
+    background: #F1F1F1 url("../img/pencil.svg") 50% no-repeat;
+    position: absolute;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border: 1px solid #F4C959;
+    height: 100%;
+    width: 15%;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+/* Edit popup */
+.edit-popup {
+    display: block;
+    z-index: 1000;
+    background: white;
+    border-radius: 16px;
+    position: absolute;
+    top: 396px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px 65px;
+    height: 350px;
+    width: 44%;
+}
+.edit-popup_title {
+    font-family: var(--main-font-family);
+    font-weight: 500;
+    color: black;
+    margin-bottom: 60px;
+}
+.edit-popup_title-colored {
+    color: #F4C959;
+}
+.edit-popup__subtitle {
+    align-self: stretch;
+}
+.subtitle-edit-popup {
+    margin-bottom: 55px;
+}
+.subtitle-edit-popup__title {
+    font-style: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.subtitle-edit-popup__input {
+    width: 100%;
+    padding-left: 13px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border: 1px solid #D2D2D2;
+    border-radius: 4px;
+}
+.subtitle-edit-popup__input::placeholder{
+    color: black;
+    font-size: 16px;
+    font-family: var(--main-font-family);
+    font-weight: 300;
+}
+.edit-popup__buttons {
+    align-self: flex-end;
+}
+.buttons-edit-popup {
+    display: flex;
+    gap: 15px;
+}
+.buttons-edit-popup__delete,
+.buttons-edit-popup__save
+{
+    padding: 8px 25px;
+    color: white;
+    font-size: 16px;
+    font-family: var(--main-font-family);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.buttons-edit-popup__delete {
+    background: #FC5151;
+}
+.buttons-edit-popup__save {
+    background: green;
 }
