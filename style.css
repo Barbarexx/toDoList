@@ -25,6 +25,22 @@ body {
 [class*="_content"]{
     padding: 0 145px;
 }
+@media screen and (max-width : 992px) {
+    [class*="_content"]{
+        padding: 0 145px;
+    }
+}
+@media screen and (max-width : 767px) {
+    [class*="_content"]{
+        padding: 0 45px;
+    }
+}
+@media screen and (max-width : 600px) {
+    [class*="_content"]{
+        padding: 0 30px;
+    }
+}
+
 /* Header */
 .header {
     background: black;
@@ -93,6 +109,18 @@ body {
     grid-template-columns: repeat(3,1fr);
     gap: 50px;
 }
+@media screen and (max-width: 1200px) {
+    .tasks-main {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .tasks-main {
+        grid-template-columns: repeat(1,1fr);
+    }
+
+}
 .main__tasks {
 }
 .main-tasks__task {
@@ -122,7 +150,7 @@ body {
     font-weight: 500;
 }
 .task__button{
-    background: #F1F1F1 url("../img/pencil.svg") 50% no-repeat;
+    background: #F1F1F1 url("img/pencil.svg") 50% no-repeat;
     position: absolute;
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
@@ -222,4 +250,24 @@ body {
 }
 .buttons-create-popup__create{
     background: #008180;
+}
+
+@media screen and (max-width : 992px) {
+
+}
+@media screen and (max-width : 767px) {
+    .edit-popup,
+    .create-popup{
+        width: 80%;
+    }
+}
+@media screen and (max-width : 600px) {
+    .edit-popup,
+    .create-popup{
+        width: 90%;
+    }
+    .edit-popup__buttons,
+    .create-popup__buttons{
+    align-self: center;
+}
 }

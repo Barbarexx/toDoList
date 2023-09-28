@@ -81,14 +81,14 @@ function deleteTask(editPopup,inputParent) {
 }
 function saveTask(popup,parent) {
     return (event)=>{
-        const taskValue = event.srcElement.parentNode.previousElementSibling.lastElementChild;
+        const taskValue = event.srcElement.parentNode.previousElementSibling.lastElementChild.value;
         wrap.classList.toggle('dark');
         popup.remove();
         if (parent) {
-            parent.target.previousElementSibling.value = `${taskValue.value}`
+            parent.target.previousElementSibling.value = `${taskValue}`
         }
         else{
-            createTaskItem(taskValue.value)
+            createTaskItem(taskValue)
         }
     }
 }
