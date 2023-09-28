@@ -1,7 +1,5 @@
 const wrap = document.querySelector('.wrap')
-
 addEventListeners()
-
 function addEventListeners() {
     const createButton = document.querySelector(`#create-task-button`);
     const editButtons = document.querySelectorAll(`.edit-button`);
@@ -15,7 +13,7 @@ function createTask() {
     const buttonCreate = document.querySelector('.buttons-create-popup__create');
     buttonCreate.addEventListener('click',saveTask(createPopup))
 }
-function createEditPopup(inputValue) {
+function createEditPopup(value) {
     const editPopup = document.createElement('div');
     editPopup.className = 'edit-popup';
     editPopup.innerHTML = `
@@ -27,7 +25,7 @@ function createEditPopup(inputValue) {
         <p class="subtitle-edit-popup__title">
             Название
         </p>
-        <input data-type="edit" class="subtitle-edit-popup__input" type="text" value="${inputValue}">
+        <input data-type="edit" class="subtitle-edit-popup__input" type="text" value="${value}">
     </div>
     <div class="edit-popup__buttons buttons-edit-popup">
         <button class="buttons-edit-popup__delete">Delete</button>
@@ -39,7 +37,7 @@ function createEditPopup(inputValue) {
     wrap.classList.add('dark');
     return editPopup
 }
-function createConstructorPopup(inputValue) {
+function createConstructorPopup() {
     const editPopup = document.createElement('div');
     editPopup.className = 'create-popup';
     editPopup.innerHTML = `
@@ -64,13 +62,14 @@ function createConstructorPopup(inputValue) {
 }
 function editTask(event) {
     const inputParent = event.target.parentNode;
-    const inputValue = event.target.previousElementSibling.placeholder;
-    // Release inputvalue to popup
-    const editPopup = createEditPopup(inputValue);
+    const placeholderValue = event.target.previousElementSibling.placeholder;
+    const inputValue = event.target.previousElementSibling.value;
+
+    const editPopup = createEditPopup(inputValue ? inputValue : placeholderValue);
     const buttonDelete = document.querySelector('.buttons-edit-popup__delete');
     const buttonSave = document.querySelector('.buttons-edit-popup__save');
-
-    buttonSave.addEventListener('click',saveTask(editPopup));
+  
+    buttonSave.addEventListener('click',saveTask(editPopup, event));
     buttonDelete.addEventListener('click',deleteTask(editPopup,inputParent));
 }
 function deleteTask(editPopup,inputParent) {
@@ -80,13 +79,13 @@ function deleteTask(editPopup,inputParent) {
         inputParent.remove();
     }
 }
-function saveTask(popup) {
+function saveTask(popup,parent) {
     return (event)=>{
         const taskValue = event.srcElement.parentNode.previousElementSibling.lastElementChild;
         wrap.classList.toggle('dark');
         popup.remove();
-        if (taskValue.dataset.type === 'edit') {
-            //Edit task value
+        if (parent) {
+            parent.target.previousElementSibling.value = `${taskValue.value}`
         }
         else{
             createTaskItem(taskValue.value)
@@ -102,5 +101,6 @@ function createTaskItem(inputValue) {
     <button class="task__button edit-button"></button>
     `
     taskList.append(task);
+
     addEventListeners()
 }
