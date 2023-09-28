@@ -135,7 +135,8 @@ body {
 }
 
 /* Edit popup */
-.edit-popup {
+.edit-popup,
+.create-popup {
     display: block;
     z-index: 1000;
     background: white;
@@ -151,41 +152,49 @@ body {
     height: 350px;
     width: 44%;
 }
-.edit-popup_title {
+.edit-popup__title,
+.create-popup__title {
     font-family: var(--main-font-family);
     font-weight: 500;
     color: black;
     margin-bottom: 60px;
 }
-.edit-popup_title-colored {
+.edit-popup__title-colored {
     color: #F4C959;
 }
-.edit-popup__subtitle {
+.create-popup__title-colored {
+    color: #008180;
+}
+.edit-popup__subtitle,
+.create-popup__subtitle {
     align-self: stretch;
 }
-.subtitle-edit-popup {
+.subtitle-edit-popup,
+.subtitle-create-popup {
     margin-bottom: 55px;
 }
-.subtitle-edit-popup__title {
+.subtitle-edit-popup__title,
+.subtitle-create-popup__title {
     font-style: 14px;
     font-weight: 500;
     margin-bottom: 5px;
 }
-.subtitle-edit-popup__input {
+.subtitle-edit-popup__input,
+.subtitle-create-popup__input {
     width: 100%;
     padding-left: 13px;
     padding-top: 13px;
     padding-bottom: 13px;
     border: 1px solid #D2D2D2;
     border-radius: 4px;
-}
-.subtitle-edit-popup__input::placeholder{
     color: black;
     font-size: 16px;
     font-family: var(--main-font-family);
     font-weight: 300;
 }
-.edit-popup__buttons {
+
+.edit-popup__buttons,
+.create-popup__buttons{
     align-self: flex-end;
 }
 .buttons-edit-popup {
@@ -193,7 +202,8 @@ body {
     gap: 15px;
 }
 .buttons-edit-popup__delete,
-.buttons-edit-popup__save
+.buttons-edit-popup__save,
+.buttons-create-popup__create
 {
     padding: 8px 25px;
     color: white;
@@ -209,4 +219,7 @@ body {
 }
 .buttons-edit-popup__save {
     background: green;
+}
+.buttons-create-popup__create{
+    background: #008180;
 }
