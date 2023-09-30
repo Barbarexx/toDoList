@@ -50,10 +50,6 @@ body {
     justify-content: center;
     
 }
-
-.header__content {
-}
-
 .content-header {
     display: flex;
     flex-direction: row;
@@ -121,10 +117,6 @@ body {
     }
 
 }
-.main__tasks {
-}
-.main-tasks__task {
-}
 .task {
     position: relative;
     
@@ -170,7 +162,7 @@ body {
     background: white;
     border-radius: 16px;
     position: absolute;
-    top: 396px;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -250,10 +242,6 @@ body {
 }
 .buttons-create-popup__create{
     background: #008180;
-}
-
-@media screen and (max-width : 992px) {
-
 }
 @media screen and (max-width : 767px) {
     .edit-popup,

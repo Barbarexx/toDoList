@@ -1,6 +1,8 @@
+const taskList = document.querySelector('.main__tasks');
+taskList.innerHTML = localStorage.getItem("task")
 const wrap = document.querySelector('.wrap')
-addEventListeners()
-function addEventListeners() {
+handleEventListeners()
+function handleEventListeners() {
     const createButton = document.querySelector(`#create-task-button`);
     const editButtons = document.querySelectorAll(`.edit-button`);
     editButtons.forEach((editButton)=>{
@@ -77,15 +79,19 @@ function deleteTask(editPopup,inputParent) {
         wrap.classList.toggle('dark');
         editPopup.remove();
         inputParent.remove();
+        localStorage.setItem("task", taskList.innerHTML)
     }
 }
 function saveTask(popup,parent) {
     return (event)=>{
         const taskValue = event.srcElement.parentNode.previousElementSibling.lastElementChild.value;
+        console.dir(event.srcElement.parentNode.previousElementSibling.lastElementChild);
         wrap.classList.toggle('dark');
         popup.remove();
         if (parent) {
             parent.target.previousElementSibling.value = `${taskValue}`
+            parent.target.previousElementSibling.setAttribute('value', `${taskValue}`)
+            localStorage.setItem("task", taskList.innerHTML)
         }
         else{
             createTaskItem(taskValue)
@@ -101,6 +107,6 @@ function createTaskItem(inputValue) {
     <button class="task__button edit-button"></button>
     `
     taskList.append(task);
-
-    addEventListeners()
+    localStorage.setItem("task", taskList.innerHTML)
+    handleEventListeners()
 }
